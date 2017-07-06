@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>lazyload</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            margin:auto;
+            /*width: 390px;*/
+            /*height: 400px;*/
+            box-sizing: border-box;
+            border:1px solid red;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        .img-wrapper img {
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="img-wrapper">
+        <img class="lazy" data-src="http://img.alicdn.com/tps/TB19RaGLpXXXXcDXpXXXXXXXXXX-333-261.jpg_q50.jpg?imgtag=avatar">
+        <img class="lazy" data-src="http://img.alicdn.com/imgextra/i4/69/TB2Y01apFXXXXcOXXXXXXXXXXXX_!!2-subaru.png">
+        <img class="lazy" data-src="http://gw.alicdn.com/tps/i2/TB1nQXGJVXXXXcEXXXXKKOh2VXX-432-567.jpg_q50.jpg?imgtag=avatar">
+        <img class="lazy" data-src="http://gw.alicdn.com/tps/TB1u_5AKVXXXXaGXFXXXXXXXXXX-432-330.jpg_q50.jpg">
+        <img class="lazy" data-src="http://img.alicdn.com/imgextra/i4/74/TB2B.iSzUhnpuFjSZFpXXcpuXXa_!!2-subaru.png">
+        <img class="lazy" data-src="http://img.alicdn.com/imgextra/i3/55/TB2KJomdJ0opuFjSZFxXXaDNVXa_!!2-subaru.png">
+        <img class="lazy" data-src="http://img.alicdn.com/imgextra/i3/46/TB2uUw2rYBmpuFjSZFuXXaG_XXa_!!2-subaru.png">
+        <img class="lazy" data-src="http://img.alicdn.com/bao/uploaded/i3/T17IghFP0bXXXXXXXX_!!0-item_pic.jpg_q50.jpg">
+        <img class="lazy" data-src="http://img.alicdn.com/bao/uploaded/i2/1658241454/TB2Ge4CrShlpuFjSspkXXa1ApXa_!!1658241454.jpg_q50.jpg">
+
+        <img class="lazy" data-src="http://img.alicdn.com/imgextra/i1/38/TB2BoShqB8lpuFjy0FnXXcZyXXa_!!2-subaru.png">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t3238/208/2618725200/281906/685fee71/57e3b072N661cd00d.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t3214/319/2407428237/95092/718348e9/57e1ff09Nf610fea3.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t3229/253/2552542848/45053/86b60c3d/57e1ff17N286390a9.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t3241/3/2436746889/19615/4791df75/57e1ff2fN8a36d0fe.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t3292/350/2662126294/86079/d964463d/57e52dffNa4d8ce2c.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t3286/236/2854658139/269344/74a74c40/57e52e03N4ec367dd.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t3268/219/2677333343/86778/401e8c9/57e52e06N116974f7.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t5785/24/2243796048/134801/923e11/592ea14fNec6d33c4.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t5599/31/2225426742/107715/f8c45e2/592ea154N90eb5d58.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t5674/184/2243685571/55421/3520baa8/592ea159Nb53e4752.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t2194/144/2158999748/194227/e6f1aa73/56f38e2cN92c0059e.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t2398/147/2200431070/239296/a782f268/56f38e29N8c8af2e4.jpg!q70.jpg">
+        <img class="lazy" data-src="https://m.360buyimg.com/n12/jfs/t2053/313/2175550857/106976/ceb59109/56f38e30N5a56d500.jpg!q70.jpg">
+
+    </div>
+</div>
+
+<script src="../src/Lazyload.js"></script>
+<script>
+    var LZ = new Lazyload({
+        // container: '.box',
+        direction: 'vertical'   /*horizontal*/
+    });
+
+</script>
+</body>
+</html>
