@@ -169,6 +169,8 @@ LLFn._setting = function () {
     ];
 
     this.on('scroll', this._handleScroll);
+
+    this.timer = null;
 };
 
 LLFn.on = function (eventName, fn) {
@@ -290,54 +292,60 @@ LLFn._handleScroll = function (e) {
         e.preventDefault();
     }
 
-    for (var i = 0, len = this.elems.length;i<len;i++) {
-        var el = this.elems[i];
-        if (this._isInsideViewport(el)) {
-            var _el = this.elems[i];
+    window.clearTimeout(this.timer);
 
-            if (hasClass(_el, this.opts.className)) {
-                fakeImgMethed.call(this);
-                function generatorMehod() {
-                    removeClass(_el, this.opts.className);
-                    _el.src = _el.getAttribute(this.opts.data_src);
-                    _el.style.opacity = 0;
-                    addEvent(_el, 'load', function () {
-                        console.log(this);
+    this.timer = setTimeout(function () {
+        for (var i = 0, len = this.elems.length;i<len;i++) {
+            var el = this.elems[i];
+            if (this._isInsideViewport(el)) {
+                var _el = this.elems[i];
 
-                        this.style[TRANSITION] = 'all .3s linear';
-                        this.style.opacity = 1;
-                    });
-                }
-                function fakeImgMethed() {
-                    removeClass(_el, this.opts.className);
+                if (hasClass(_el, this.opts.className)) {
+                    fakeImgMethed.call(this);
+                    function generatorMehod() {
+                        removeClass(_el, this.opts.className);
+                        _el.src = _el.getAttribute(this.opts.data_src);
+                        _el.style.opacity = 0;
+                        addEvent(_el, 'load', function () {
+                            console.log(this);
 
-                    var oImg = document.createElement('img');
-                    oImg.src = _el.getAttribute(this.opts.data_src);
-
-                    function _loadImg() {
-                        this.style.opacity = 0;
-                        this.src = oImg.src;
-
-                        setTimeout(function () {
-                            this.style[TRANSITION] = 'all .4s linear';
+                            this.style[TRANSITION] = 'all .3s linear';
                             this.style.opacity = 1;
-                        }.bind(this), 16);
+                        });
+                    }
+                    function fakeImgMethed() {
+                        removeClass(_el, this.opts.className);
+
+                        var oImg = document.createElement('img');
+                        oImg.src = _el.getAttribute(this.opts.data_src);
+
+                        function _loadImg() {
+                            this.style.opacity = 0;
+                            this.src = oImg.src;
+
+                            setTimeout(function () {
+                                this.style[TRANSITION] = 'all .4s linear';
+                                this.style.opacity = 1;
+                            }.bind(this), 16);
+                        }
+
+                        var _ = _bind(_loadImg, _el);
+
+                        addEvent(oImg, 'load', function () {
+                            _();
+
+                            delete oImg;
+                        });
                     }
 
-                    var _ = _bind(_loadImg, _el);
-
-                    addEvent(oImg, 'load', function () {
-                        _();
-
-                        delete oImg;
-                    });
                 }
-
             }
         }
-    }
 
-    this._purgeElems();
+        this._purgeElems();
+    }.bind(this), 200);
+
+
 
 };
 
